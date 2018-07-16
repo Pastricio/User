@@ -1,0 +1,28 @@
+@(userForm : Form[User])
+@import helper._
+<html>
+    <dead>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
+
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/bootstrap.min.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/bootstrap-theme.min.css")">
+
+
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
+        <script src="@routes.Assets.versioned("javascripts/hello.js")" type="text/javascript"></script>
+
+        <script src="@routes.Assets.versioned("javascripts/bootstrap.min.js")" type="text/javascript"></script>
+    </dead>
+    <body>
+        <h2>Crear nuevo usuario</h2>
+        @helper.form(action = helper.CSRF(routes.UserController.save())){
+            @helper.inputText(userForm("username"), '_label -> ("Nombre de Usuario "), 'maxlenght -> 250, 'autocomplete -> "new-password")
+            @helper.inputPassword(userForm("password"), '_label -> ("Contraseña"), 'maxlength -> 250, 'autocomplete -> "new-password")
+            @helper.inputText(userForm("nombre"), '_label -> ("Nombres"), 'maxlength -> 250)
+            @helper.inputText(userForm("telefono"), '_label -> ("Teléfono"), 'maxlength -> 12)
+            @helper.inputText(userForm("email"), '_label -> ("Correo"), 'maxlength -> 250)
+            <input class="btn btn-success"type="submit" value="Crear">
+        }
+
+    </body>
+</html>
